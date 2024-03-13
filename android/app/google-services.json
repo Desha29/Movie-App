@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "694730752148",
+    "project_id": "movie-app-31b60",
+    "storage_bucket": "movie-app-31b60.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694730752148:android:83193f16851e84dc0df481",
+        "android_client_info": {
+          "package_name": "com.example.movie_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694730752148-hnfiibj7b1ji0p6dl35evi0qfh37dlml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvPgjMwq0Cl7QEKyb0hn7UjJJSLMMNy9U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694730752148-hnfiibj7b1ji0p6dl35evi0qfh37dlml.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "694730752148-e528tjuuui2kl2skklfcllipa73hhlg5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.movieMingle.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694730752148:android:f9ed485de13881910df481",
+        "android_client_info": {
+          "package_name": "com.example.movie_mingle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694730752148-hnfiibj7b1ji0p6dl35evi0qfh37dlml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvPgjMwq0Cl7QEKyb0hn7UjJJSLMMNy9U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694730752148-hnfiibj7b1ji0p6dl35evi0qfh37dlml.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "694730752148-e528tjuuui2kl2skklfcllipa73hhlg5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.movieMingle.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
