@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import '/../data/model/onboardingmodel.dart';
-
-import '../grandientcolors.dart';
+import '../../../components/components.dart';
+import '../../../model/onboardingmodel.dart';
 
 class CustomTitleAuth extends StatelessWidget {
   final String text;
@@ -48,7 +47,7 @@ class CustomTitleAuth extends StatelessWidget {
             )
           ])),
         ),
-        GrandientColor(top: 120, height: 200, bottom: -10)
+        GradientColor(top: 120, height: 200, bottom: -10)
       ],
     );
   }

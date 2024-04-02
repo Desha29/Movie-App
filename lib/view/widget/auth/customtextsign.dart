@@ -24,7 +24,7 @@ class CustomTextSign extends StatelessWidget {
             onTap: onTap,
             child: Text(
               sign,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Color(0xffe50014),
                   fontSize: 17,
                   fontWeight: FontWeight.bold),

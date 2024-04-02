@@ -3,24 +3,27 @@ import 'package:flutter/material.dart';
 class CustomTextFormAuth extends StatelessWidget {
   final String hinttext;
   final String labeltext;
-  final IconData? iconData;
   final TextEditingController? mycontroller;
   final String? Function(String?)? validate;
   final TextInputType? keyboardType;
-  const CustomTextFormAuth(
+  final IconButton? suffix;
+  bool isPassword;
+  CustomTextFormAuth(
       {super.key,
       required this.hinttext,
       required this.labeltext,
-      this.iconData,
       this.mycontroller,
       this.validate,
-      this.keyboardType});
+      this.keyboardType,
+      this.suffix,
+      this.isPassword = false});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 30),
       child: TextFormField(
+        obscureText: isPassword,
         keyboardType: keyboardType,
         validator: validate,
         cursorColor: Colors.white,
@@ -44,7 +47,7 @@ class CustomTextFormAuth extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 10),
                 child: Text(labeltext)),
             hintText: hinttext,
-            suffixIcon: Icon(iconData),
+            suffixIcon: suffix,
             labelStyle: const TextStyle(fontSize: 22, color: Colors.white),
             hintStyle: const TextStyle(fontSize: 14)),
       ),

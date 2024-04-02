@@ -1,10 +1,8 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:movie_app/controller/auth/login_controller.dart';
-import '/../core/constant/routes.dart';
-import '/../data/datasource/dataprovider/remote/firebase_auth_helper.dart';
+import 'package:movie_app/cubit/login_cubit/login_cubit.dart';
+import '../../../components/constant/routes.dart';
 
 class DrawerColumn extends StatelessWidget {
   DrawerColumn({super.key});
@@ -27,12 +25,12 @@ class DrawerColumn extends StatelessWidget {
             leading:
                 const CircleAvatar(backgroundColor: Colors.black, radius: 40),
             title: Text(
-              LoginImp.userName,
+              LoginCubit.userName,
               style: const TextStyle(
                   color: Colors.white, fontWeight: FontWeight.w600),
             ),
             subtitle: Text(
-              LoginImp.userEmail,
+              LoginCubit.userEmail,
               maxLines: 2,
               style: const TextStyle(color: Colors.white70),
             ),
@@ -61,7 +59,11 @@ class DrawerColumn extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              FireBaseHelper().SignOut();
+              LoginCubit.get(context).logOut();
+              Navigator.pushReplacementNamed(
+                context,
+                AppRoutes.loginPage,
+              );
             },
             child: const ListTile(
               leading: Icon(

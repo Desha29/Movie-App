@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
-import '/../controller/onboarding_controller.dart';
-import '/../core/constant/routes.dart';
-import '/../data/datasource/static/static.dart';
-import '/../data/model/onboardingmodel.dart';
+import '../../../components/constant/routes.dart';
+import '../../../cubit/onboarding_cubit/onboarding_cubit.dart';
+import '../../../data/static/static.dart';
+import '../../../model/onboardingmodel.dart';
 
-class CustomSliderOnBoarding extends GetView<OnBoardingImplement> {
+class CustomSliderOnBoarding extends StatelessWidget {
   const CustomSliderOnBoarding({
     super.key,
     required this.height,
@@ -16,13 +14,13 @@ class CustomSliderOnBoarding extends GetView<OnBoardingImplement> {
   final double height;
   final double width;
 
-  @override
   Widget build(BuildContext context) {
+    OnBoardingCubit cubit = OnBoardingCubit.get(context);
     return PageView.builder(
         allowImplicitScrolling: true,
-        controller: controller.pageController,
+        controller: cubit.pageController,
         onPageChanged: (value) {
-          controller.onPageChanged(value);
+          cubit.onPageChanged(value);
         },
         itemCount: onBoardingList.length,
         itemBuilder: (context, i) => Stack(
@@ -58,7 +56,10 @@ class CustomSliderOnBoarding extends GetView<OnBoardingImplement> {
                                 ),
                               ),
                               InkWell(
-                                onTap: () => Get.offAllNamed(AppRoutes.choose),
+                                onTap: () => Navigator.pushNamedAndRemoveUntil(
+                                    context,
+                                    AppRoutes.loginPage,
+                                    (route) => true),
                                 child: Container(
                                   height: 35,
                                   width: 70,

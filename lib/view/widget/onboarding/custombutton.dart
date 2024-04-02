@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
-import '/../controller/onboarding_controller.dart';
 
-class CustomButtonOnBoarding extends GetView<OnBoardingImplement> {
+import '../../../cubit/onboarding_cubit/onboarding_cubit.dart';
+
+class CustomButtonOnBoarding extends StatelessWidget {
   const CustomButtonOnBoarding({
     super.key,
     required this.width,
@@ -10,12 +10,11 @@ class CustomButtonOnBoarding extends GetView<OnBoardingImplement> {
 
   final double width;
 
-  @override
   Widget build(BuildContext context) {
     return Center(
       child: MaterialButton(
         onPressed: () {
-          controller.next();
+          OnBoardingCubit.get(context).next();
         },
         textColor: Colors.white,
         color: const Color(0xffe50914),

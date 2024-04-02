@@ -1,31 +1,26 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../../core/constant/api_constants.dart';
-import '../../../data/model/movies_model.dart';
+import '../../../components/components.dart';
+import '../../../components/constant/api_constants.dart';
+import '../../../components/constant/routes.dart';
+import '../../../components/loading_widget.dart';
+import '../../../cubit/movies_cubit/movie_cubit.dart';
 import 'movie_roundimage.dart';
-import '../../../controller/moviesdata_controlletr.dart';
-import '../../../controller/get_movies.dart';
-import '../../../core/constant/routes.dart';
 
 class MovieSlider extends StatelessWidget {
   MovieSlider({
     super.key,
+    required this.trendingMovies,
   });
-
+  final List trendingMovies;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 15),
-      child: MoviesData.trendingMovies.isEmpty
-          ? const Center(
-              child: CircularProgressIndicator(
-              color: Color.fromARGB(255, 237, 55, 55),
-            ))
+      child: MovieCubit.trendingMovies.isEmpty
+          ? const LoadingWidget()
           : CarouselSlider.builder(
-              itemCount: MoviesData.trendingMovies.isEmpty
-                  ? 0
-                  : MoviesData.trendingMovies.length,
+              itemCount: trendingMovies.isEmpty ? 0 : trendingMovies.length,
               options: CarouselOptions(
                   viewportFraction: 1,
                   autoPlayCurve: Curves.ease,
@@ -36,22 +31,22 @@ class MovieSlider extends StatelessWidget {
               itemBuilder: (context, index, realIndex) {
                 return InkWell(
                   onTap: () async {
-                    DioHelper.id =
-                        MoviesData.trendingMovies[index].id.toString();
-                    List castList = await DioHelper().getCasts();
-                    MoviesData.casts = Casts.convertToCasts(castList);
-                    Get.toNamed(AppRoutes.moviepage,
-                        arguments: [index, MoviesData.trendingMovies]);
+                    navigateTo(context, AppRoutes.moviepage,
+                        arguments: [index, MovieCubit.trendingMovies]);
                   },
                   child: MovieRoundImage(
-                    MovieImage: ApiConstants.imageUrl +
-                        MoviesData.trendingMovies[index].posterPath,
-                    Moviename: MoviesData.trendingMovies[index].title,
-                    Rating: MoviesData.trendingMovies[index].voteAverage
+                    index: index,
+                    movieCategories: trendingMovies,
+                    id: trendingMovies[index].id,
+                    movieImage: ApiConstants.imageUrl +
+                        trendingMovies[index].posterPath,
+                    moviename: trendingMovies[index].title,
+                    rating: trendingMovies[index]
+                        .voteAverage
                         .roundToDouble()
                         .toString(),
-                    Stars: MoviesData.trendingMovies[index].voteAverage /
-                        2.roundToDouble(),
+                    stars:
+                        trendingMovies[index].voteAverage / 2.roundToDouble(),
                   ),
                 );
               },

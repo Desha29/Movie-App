@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
-import '/../controller/onboarding_controller.dart';
-import '/../data/datasource/static/static.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../components/constant/routes.dart';
+import '../../../cubit/onboarding_cubit/onboarding_cubit.dart';
+import '../../../cubit/onboarding_cubit/onboarding_states.dart';
+import '../../../data/static/static.dart';
 
 class ControllerOnBoarding extends StatelessWidget {
   const ControllerOnBoarding({
@@ -10,22 +12,31 @@ class ControllerOnBoarding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<OnBoardingImplement>(
-      builder: (controller) => Row(
-        children: [
-          ...List.generate(
-              onBoardingList.length,
-              (index) => AnimatedContainer(
-                    margin: const EdgeInsets.only(left: 5),
-                    duration: const Duration(milliseconds: 300),
-                    height: 5,
-                    width: controller.currentPage == index ? 25 : 5,
-                    decoration: BoxDecoration(
-                        color: const Color(0xffABA4A2),
-                        borderRadius: BorderRadius.circular(10)),
-                  ))
-        ],
-      ),
+    return BlocConsumer<OnBoardingCubit, OnBoardingStates>(
+      builder: (context, state) {
+        OnBoardingCubit cubit = OnBoardingCubit.get(context);
+        return Row(
+          children: [
+            ...List.generate(
+                onBoardingList.length,
+                (index) => AnimatedContainer(
+                      margin: const EdgeInsets.only(left: 5),
+                      duration: const Duration(milliseconds: 300),
+                      height: 5,
+                      width: cubit.currentPage == index ? 25 : 5,
+                      decoration: BoxDecoration(
+                          color: const Color(0xffABA4A2),
+                          borderRadius: BorderRadius.circular(10)),
+                    ))
+          ],
+        );
+      },
+      listener: (context, state) {
+        if (state is OnBoardingEnding) {
+          Navigator.pushNamedAndRemoveUntil(
+              context, AppRoutes.loginPage, (route) => true);
+        }
+      },
     );
   }
 }

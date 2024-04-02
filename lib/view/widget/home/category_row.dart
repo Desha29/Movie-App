@@ -2,12 +2,20 @@ import 'package:flutter/material.dart';
 import '/../view/widget/home/category_button.dart';
 
 class CategoryRow extends StatelessWidget {
-  const CategoryRow({
+  CategoryRow({
     super.key,
-    required this.CategoryNames,
+
   });
 
-  final List<String> CategoryNames;
+ final List<String> CategoryNames = [
+    "Action",
+    "Drama",
+    "Comedy",
+    "Horror",
+    "Romance",
+    "Cartoon"
+  ];
+
 
   @override
   Widget build(BuildContext context) {

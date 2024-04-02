@@ -43,9 +43,13 @@ dependencies:
   get: ^4.6.6
   flutter_rating_bar: ^4.0.1
   carousel_slider: ^4.2.1
-  dio: ^5.4.1
+  dio: ^5.4.2+1
   firebase_auth: ^4.17.9
   google_sign_in: ^6.2.1
+  flutter_bloc: ^8.1.5
+  youtube_player_flutter: ^9.0.0
+  fluttertoast: ^8.2.4
+  lottie: ^3.1.0
 
 dev_dependencies:
   flutter_test:

@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/view/screen/auth/login_screen.dart';
+import 'package:movie_app/view/screen/auth/signup_screen.dart';
 
-import 'core/constant/routes.dart';
-import 'view/screen/auth/login.dart';
-import 'view/screen/auth/login_or_signup.dart';
-import 'view/screen/auth/signup.dart';
-import 'view/screen/home.dart';
-import 'view/screen/movie_categories.dart';
-import 'view/screen/moviepage/movie_details.dart';
-import 'view/screen/search.dart';
+import 'components/constant/routes.dart';
+import 'view/screen/home_screen.dart';
+import 'view/screen/movie/movie_categories_screen.dart';
+import 'view/screen/movie/movie_details_screen.dart';
+import 'view/screen/movie/movie_play_screen.dart';
+
+import 'view/screen/search_screen.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
-  AppRoutes.choose: (context) => LoginOrSignup(),
-  AppRoutes.login: (context) => const Login(),
-  AppRoutes.signup: (context) => const SignUp(),
-  AppRoutes.home: (context) => HomePage(),
+  AppRoutes.loginPage: (context) => const LoginScreen(),
+  AppRoutes.signupPage: (context) => const SignUpScreen(),
+  AppRoutes.homePage: (context) => HomeScreen(),
   AppRoutes.moviepage: (context) => MovieDetails(),
   AppRoutes.movieTypePage: (context) => MovieTypePage(),
   AppRoutes.searchPage: (context) => const SearchPage(),
+  AppRoutes.moviePlayPage: (context) => MoviePlayScreen(),
 };

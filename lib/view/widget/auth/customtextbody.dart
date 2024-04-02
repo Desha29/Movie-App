@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CustomTextBodyAuth extends StatelessWidget {
-  final String texttitle;
+  final String textitle;
   final String textbody;
   const CustomTextBodyAuth({
     super.key,
-    required this.texttitle,
+    required this.textitle,
     required this.textbody,
   });
 
@@ -14,7 +14,7 @@ class CustomTextBodyAuth extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
-          texttitle,
+          textitle,
           style: const TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.bold,

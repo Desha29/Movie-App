@@ -1,60 +1,45 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-class test extends StatelessWidget {
-  const test({super.key});
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:movie_app/cubit/movies_cubit/movie_cubit.dart';
+// import 'package:movie_app/cubit/movies_cubit/video_cubit/video_cubit.dart';
+// import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+// import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
-      child: Column(
-        children: [
-          const ListTile(
-            leading: CircleAvatar(backgroundColor: Colors.amber, radius: 40),
-            title: Text(
-              "Name",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
-            ),
-            subtitle: Text(
-              "email@gmail.com",
-              style: TextStyle(color: Color.fromARGB(103, 193, 181, 181)),
-            ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          SizedBox(
-            height: 400,
-            child: ListView.builder(
-                itemCount: 6,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    onTap: () {},
-                    leading: const Icon(Icons.favorite_border_rounded),
-                    title: const Text(
-                      "Favourite",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w200,
-                          color: Color.fromARGB(103, 193, 181, 181)),
-                    ),
-                  );
-                }),
-          ),
-          const ListTile(
-            leading: Icon(
-              Icons.logout,
-              size: 35,
-            ),
-            title: Text(
-              "Logout",
-              style: TextStyle(
-                  fontWeight: FontWeight.w200,
-                  color: Color.fromARGB(103, 193, 181, 181)),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
+
+// import '../../core/constant/api_constants.dart';
+
+
+// class Testp extends StatefulWidget {
+//   const Testp({super.key});
+
+//   @override
+//   State<Testp> createState() => _Testp();
+// }
+
+// class _Testp extends State<Testp> {
+
+//   late YoutubePlayerController _controller;
+
+//  @override
+//   void initState() {
+//     // TODO: implement initState
+//    final videoID=YoutubePlayer.convertUrlToId(ApiConstants.youtubeUrl+"YMx8Bbev6T4");
+
+//    _controller=YoutubePlayerController(initialVideoId:videoID! ,flags: const YoutubePlayerFlags(autoPlay: false));
+//   }
+
+
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return  Scaffold(
+//         body: Center(child:
+//               YoutubePlayer(
+//               controller:_controller,
+//               showVideoProgressIndicator: true,
+//     onReady:()=> debugPrint("ready"),),),);
+
+//   }
+// }

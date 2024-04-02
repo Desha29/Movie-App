@@ -1,16 +1,21 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/cubit/app/app_cubit.dart';
+import 'package:movie_app/cubit/movies_cubit/search_cubit/search_cubit.dart';
 import '/../routes.dart';
-import '/../view/screen/auth/login.dart';
-import '/../view/screen/home.dart';
-import 'firebase_options.dart';
+import 'components/constant/bloc_observer.dart';
+import 'components/components.dart';
+import 'cubit/login_cubit/login_cubit.dart';
+import 'cubit/onboarding_cubit/onboarding_cubit.dart';
+import 'cubit/signup_cubit/signup_cubit.dart';
+import 'data/firebase/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
+  Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
 
@@ -36,21 +41,20 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(
-        useMaterial3: true,
-      ),
-      routes: routes,
-      home: start(),
-    );
-  }
-}
-
-Widget start() {
-  if (FirebaseAuth.instance.currentUser != null) {
-    return HomePage();
-  } else {
-    return Login();
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => AppCubit()),
+          BlocProvider(create: (context) => LoginCubit()),
+          BlocProvider(create: (context) => SignUpCubit()),
+          BlocProvider(create: (context) => OnBoardingCubit()),
+          BlocProvider(create: (context) => SearchCubit()),
+        ],
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData.dark(
+              useMaterial3: true,
+            ),
+            routes: routes,
+            home: start()));
   }
 }
