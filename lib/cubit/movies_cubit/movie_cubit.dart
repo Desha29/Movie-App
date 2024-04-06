@@ -20,7 +20,7 @@ class MovieCubit extends Cubit<MovieState> {
 
     try {
       await getData();
-      emit(MovieSuccesState(
+      emit(MovieSuccessState(
         upComingMovies: upComingMovies,
         trendingMovies: trendingMovies,
         nowPlayingMovies: nowPlayingMovies,

@@ -1,3 +1,4 @@
+import 'package:conditional_builder_rec/conditional_builder_rec.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/model/movies_model.dart';
@@ -72,9 +73,14 @@ class MoviePlayScreen extends StatelessWidget {
                           rating: movieItem.voteCount.toString()),
                       Text("Storyline:", style: darkTheme.textTheme.labelLarge),
                       ExpandableText(text: movieItem.overview),
-                      MovieRow(
-                          title: " Recommended",
-                          movies: VideoCubit.recommendingMovies),
+                      ConditionalBuilderRec(
+                        condition: VideoCubit.recommendingMovies.isNotEmpty,
+                        builder: (context) {
+                          return MovieRow(
+                              title: " Recommended",
+                              movies: VideoCubit.recommendingMovies);
+                        },
+                      ),
                       MovieRow(
                           title: " Similar",
                           movies: VideoCubit.similarlyMovies),

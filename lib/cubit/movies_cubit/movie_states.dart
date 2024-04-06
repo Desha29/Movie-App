@@ -7,7 +7,7 @@ final class MovieInitialState extends MovieState {}
 
 final class MovieLoadingState extends MovieState {}
 
-final class MovieSuccesState extends MovieState {
+final class MovieSuccessState extends MovieState {
   final List<Movies> upComingMovies;
   final List<Movies> nowPlayingMovies;
   final List<Movies> topRatedMovies;
@@ -17,7 +17,7 @@ final class MovieSuccesState extends MovieState {
   // final List<Casts> casts ;
   // final List<Videos> videos;
 
-  MovieSuccesState({
+  MovieSuccessState({
     required this.upComingMovies,
     required this.nowPlayingMovies,
     required this.topRatedMovies,

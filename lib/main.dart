@@ -33,6 +33,8 @@ class _MyAppState extends State<MyApp> {
       if (user == null) {
         print('===============================User is currently signed out!');
       } else {
+        LoginCubit.userName = user.displayName!.toString();
+        LoginCubit.userEmail = user.email!.toString();
         print('===============================User is signed in!');
       }
     });

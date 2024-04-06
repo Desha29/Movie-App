@@ -20,7 +20,7 @@ class HomeBody extends StatelessWidget {
           return _HomeLoadingState();
         } else if (state is MovieFailedState) {
           return _HomeFailedState(state.message);
-        } else if (state is MovieSuccesState) {
+        } else if (state is MovieSuccessState) {
           return _HomeSuccessState(state.nowPlayingMovies, state.upComingMovies,
               state.topRatedMovies, state.popularMovies, state.trendingMovies);
         } else {
@@ -32,6 +32,7 @@ class HomeBody extends StatelessWidget {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _HomeSuccessState(nowPlayingMovies, List upComingMovies,
       List topRatedMovies, List popularMovies, List trendingMovies) {
     return Padding(
@@ -43,7 +44,7 @@ class HomeBody extends StatelessWidget {
         addSemanticIndexes: true,
         children: [
           const Text(
-            "Trending Movies" + "🔥",
+            "Trending Movies" "🔥",
             style: TextStyle(
                 color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
           ),
@@ -69,8 +70,10 @@ class HomeBody extends StatelessWidget {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _HomeFailedState(String message) =>
       ExceptionWidget(icon: Icons.error, message: message);
 
+  // ignore: non_constant_identifier_names
   Widget _HomeLoadingState() => const LoadingWidget();
 }
