@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/components/loading_widget.dart';
-import 'package:movie_app/view/screen/spalsh_screen.dart';
 import '../../../cubit/movies_cubit/movie_cubit.dart';
 import '../../../components/exception_widget.dart';
 import 'category_row.dart';

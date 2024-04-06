@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../components/constant/dark_theme.dart';
+
 class BarDetails extends StatelessWidget {
   final String textTitle;
   final String textData;
@@ -11,14 +13,8 @@ class BarDetails extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          textTitle,
-          style: const TextStyle(
-              color: Color(0xffe50914),
-              fontSize: 16,
-              fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 10),
+        Text(textTitle, style: darkTheme.textTheme.labelLarge),
+        const SizedBox(height: 10),
         Text(
           textData,
           style: const TextStyle(

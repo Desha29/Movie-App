@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:movie_app/cubit/login_cubit/login_cubit.dart';
-import '../../../components/constant/routes.dart';
+import 'package:movie_app/view/screen/auth/login_screen.dart';
+
+import '../../../components/components.dart';
 
 class DrawerColumn extends StatelessWidget {
   DrawerColumn({super.key});
@@ -60,10 +62,7 @@ class DrawerColumn extends StatelessWidget {
           InkWell(
             onTap: () {
               LoginCubit.get(context).logOut();
-              Navigator.pushReplacementNamed(
-                context,
-                AppRoutes.loginPage,
-              );
+              navigateToReplacement(context, const LoginScreen());
             },
             child: const ListTile(
               leading: Icon(

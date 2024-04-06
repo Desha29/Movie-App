@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
+import 'package:movie_app/view/screen/movie/movie_categories_screen.dart';
+import 'package:movie_app/view/widget/home/image_container.dart';
 import '../../../components/components.dart';
 import '../../../components/constant/api_constants.dart';
-import '../../../components/constant/imageassets.dart';
-import '../../../components/constant/routes.dart';
+import '../../../components/constant/colors.dart';
 import '../../../components/loading_widget.dart';
+import '../../screen/movie/movie_details_screen.dart';
 
 class MovieRow extends StatelessWidget {
   MovieRow({super.key, required this.title, required this.movies});
@@ -31,13 +31,15 @@ class MovieRow extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    navigateTo(context, AppRoutes.movieTypePage,
-                        arguments: [title, movies]);
+                    navigateTo(
+                      context,
+                      MovieTypePage(movies: movies, title: title),
+                    );
                   },
                   child: const Text(
                     "See more",
                     style: TextStyle(
-                      color: Color.fromARGB(255, 237, 55, 55),
+                      color: ColorPalette.darkPrimary,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       decoration: TextDecoration.underline,
@@ -49,41 +51,45 @@ class MovieRow extends StatelessWidget {
             ),
           ),
           SingleChildScrollView(
-            child: SizedBox(
-              height: 240,
+            child: Container(
+              height: 280,
               child: movies.isEmpty
                   ? const LoadingWidget()
                   : ListView.builder(
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       addAutomaticKeepAlives: true,
                       itemCount: movies.length,
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return Container(
-                          child: InkWell(
-                            onTap: () async {
-                              navigateTo(context, AppRoutes.moviepage,
-                                  arguments: [index, movies]);
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 15),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
+                        return InkWell(
+                          onTap: () async {
+                            navigateTo(context,
+                                MovieDetails(movieItem: movies[index]));
+                          },
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 160,
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 10),
+                                child: Image_Container(
+                                    imageUrl: ApiConstants.imageUrl +
+                                        movies[index].posterPath,
+                                    rate: movies[index]
+                                        .voteAverage
+                                        .roundToDouble()),
                               ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.network(
-                                  ApiConstants.imageUrl +
-                                      movies[index].posterPath,
-                                  fit: BoxFit.cover,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return Image.asset(AppImageAssets.noImage);
-                                  },
-                                ),
+                              Text(
+                                movies[index].title,
+                                maxLines: 2,
+                                softWrap: true,
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 8,
+                                    fontWeight: FontWeight.w700),
                               ),
-                            ),
+                            ],
                           ),
                         );
                       }),

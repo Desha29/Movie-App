@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../components/constant/routes.dart';
+import '../../../components/components.dart';
 import '../../../cubit/onboarding_cubit/onboarding_cubit.dart';
 import '../../../data/static/static.dart';
 import '../../../model/onboardingmodel.dart';
+import '../../screen/auth/login_screen.dart';
 
 class CustomSliderOnBoarding extends StatelessWidget {
   const CustomSliderOnBoarding({
@@ -56,10 +57,8 @@ class CustomSliderOnBoarding extends StatelessWidget {
                                 ),
                               ),
                               InkWell(
-                                onTap: () => Navigator.pushNamedAndRemoveUntil(
-                                    context,
-                                    AppRoutes.loginPage,
-                                    (route) => true),
+                                onTap: () => navigateToReplacement(
+                                    context, const LoginScreen()),
                                 child: Container(
                                   height: 35,
                                   width: 70,

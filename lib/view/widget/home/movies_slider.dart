@@ -1,8 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/view/screen/movie/movie_details_screen.dart';
 import '../../../components/components.dart';
-import '../../../components/constant/api_constants.dart';
-import '../../../components/constant/routes.dart';
 import '../../../components/loading_widget.dart';
 import '../../../cubit/movies_cubit/movie_cubit.dart';
 import 'movie_roundimage.dart';
@@ -24,29 +23,18 @@ class MovieSlider extends StatelessWidget {
               options: CarouselOptions(
                   viewportFraction: 1,
                   autoPlayCurve: Curves.ease,
-                  autoPlay: true,
+                  autoPlay: false,
                   autoPlayAnimationDuration: const Duration(seconds: 2),
                   enlargeCenterPage: true,
                   pageSnapping: false),
               itemBuilder: (context, index, realIndex) {
                 return InkWell(
                   onTap: () async {
-                    navigateTo(context, AppRoutes.moviepage,
-                        arguments: [index, MovieCubit.trendingMovies]);
+                    navigateTo(context,
+                        MovieDetails(movieItem: trendingMovies[index]));
                   },
                   child: MovieRoundImage(
-                    index: index,
-                    movieCategories: trendingMovies,
-                    id: trendingMovies[index].id,
-                    movieImage: ApiConstants.imageUrl +
-                        trendingMovies[index].posterPath,
-                    moviename: trendingMovies[index].title,
-                    rating: trendingMovies[index]
-                        .voteAverage
-                        .roundToDouble()
-                        .toString(),
-                    stars:
-                        trendingMovies[index].voteAverage / 2.roundToDouble(),
+                    movieItem: trendingMovies[index],
                   ),
                 );
               },

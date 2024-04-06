@@ -8,7 +8,7 @@ class DioHelper {
 
   Future<List> getTopRatedMovies() async {
     Response response = await dio.get(
-        '${ApiConstants.baseUrl}/3/movie/top_rated?language=en-US&page=1&api_key=${ApiConstants.apiKey}');
+        '${ApiConstants.baseUrl}/3/movie/top_rated?language=en-US&page=5&api_key=${ApiConstants.apiKey}');
 
     return response.data["results"];
   }
@@ -22,14 +22,14 @@ class DioHelper {
 
   Future<List> getPopularMovies() async {
     Response response = await dio.get(
-        '${ApiConstants.baseUrl}/3/movie/popular?language=en-US&page=1&api_key=${ApiConstants.apiKey}');
+        '${ApiConstants.baseUrl}/3/movie/popular?language=en-US&page=10&api_key=${ApiConstants.apiKey}');
 
     return response.data["results"];
   }
 
   Future<List> getNowPlayingMovies() async {
     Response response = await dio.get(
-        '${ApiConstants.baseUrl}/3/movie/now_playing?language=en-US&page=1&api_key=${ApiConstants.apiKey}');
+        '${ApiConstants.baseUrl}/3/movie/now_playing?language=en-US&page=2&api_key=${ApiConstants.apiKey}');
 
     return response.data["results"];
   }
@@ -50,7 +50,7 @@ class DioHelper {
 
   Future<List> getRecommendedMovies() async {
     Response response = await dio.get(
-        'https://api.themoviedb.org/3/movie/5/recommendations?api_key=f87a718c0481b6962a7c5c4a51ef2757');
+        'https://api.themoviedb.org/3/movie/$id/recommendations?api_key=f87a718c0481b6962a7c5c4a51ef2757');
     // print(response.data.toString());
     return response.data["results"];
   }

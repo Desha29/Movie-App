@@ -50,6 +50,9 @@ dependencies:
   youtube_player_flutter: ^9.0.0
   fluttertoast: ^8.2.4
   lottie: ^3.1.0
+  google_fonts: ^6.2.1
+  cached_network_image: ^3.3.1
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

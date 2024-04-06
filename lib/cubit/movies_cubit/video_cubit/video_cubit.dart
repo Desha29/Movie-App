@@ -16,7 +16,7 @@ class VideoCubit extends Cubit<VideoState> {
   static List<Movies> similarlyMovies = [];
   static List<Movies> reviewsMovies = [];
   static String? videoId;
-  static Movies? movies;
+
   Future<void> getVideos({required int id}) async {
     emit(VideoLoadingState());
     YoutubePlayerController controller;

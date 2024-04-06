@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/model/movies_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import '../../../components/constant/routes.dart';
+import '../../../components/constant/dark_theme.dart';
 import '../../../components/exception_widget.dart';
 import '../../../components/loading_widget.dart';
 import '../../../cubit/movies_cubit/video_cubit/video_cubit.dart';
 import '../../widget/home/movie_row.dart';
 import '../../widget/movie/movie_information_row.dart';
+import '../../widget/movie/subText.dart';
+import '../home_screen.dart';
 
 class MoviePlayScreen extends StatelessWidget {
-  MoviePlayScreen({super.key});
+  MoviePlayScreen({super.key, required this.movieItem});
+  final Movies movieItem;
 
   @override
   Widget build(BuildContext context) {
-    List<dynamic> movieVideo =
-        ModalRoute.of(context)!.settings.arguments as List;
-    int args = movieVideo[0];
     return BlocProvider(
-      create: (context) => VideoCubit()..getVideos(id: args),
+      create: (context) => VideoCubit()..getVideos(id: movieItem.id),
       child: Scaffold(
         appBar: AppBar(
             iconTheme: const IconThemeData(
@@ -27,7 +28,8 @@ class MoviePlayScreen extends StatelessWidget {
             actions: [
               InkWell(
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, AppRoutes.homePage);
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()));
                   },
                   child: const Icon(
                     Icons.home_filled,
@@ -40,7 +42,7 @@ class MoviePlayScreen extends StatelessWidget {
               return ListView(children: [
                 YoutubePlayer(
                   thumbnail: Image.network(
-                    "https://img.youtube.com/vi/${args.toString()}/hqdefault.jpg",
+                    "https://img.youtube.com/vi/${movieItem.id.toString()}/hqdefault.jpg",
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return const ExceptionWidget(
@@ -65,25 +67,11 @@ class MoviePlayScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       MovieInformationRow(
-                          language: VideoCubit.movies!.language
-                              .toUpperCase()
-                              .toString(),
-                          year: VideoCubit.movies!.releaseDate.toString(),
-                          rating: VideoCubit.movies!.voteCount.toString()),
-                      const Text(
-                        "Storyline:",
-                        style: TextStyle(
-                            color: Color(0xffe50914),
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        VideoCubit.movies!.overview,
-                        style: const TextStyle(
-                            color: Colors.white70,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600),
-                      ),
+                          language: movieItem.language.toUpperCase().toString(),
+                          year: movieItem.releaseDate.toString(),
+                          rating: movieItem.voteCount.toString()),
+                      Text("Storyline:", style: darkTheme.textTheme.labelLarge),
+                      ExpandableText(text: movieItem.overview),
                       MovieRow(
                           title: " Recommended",
                           movies: VideoCubit.recommendingMovies),

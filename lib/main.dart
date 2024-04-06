@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/cubit/app/app_cubit.dart';
 import 'package:movie_app/cubit/movies_cubit/search_cubit/search_cubit.dart';
-import '/../routes.dart';
 import 'components/constant/bloc_observer.dart';
 import 'components/components.dart';
 import 'cubit/login_cubit/login_cubit.dart';
@@ -54,7 +53,6 @@ class _MyAppState extends State<MyApp> {
             theme: ThemeData.dark(
               useMaterial3: true,
             ),
-            routes: routes,
             home: start()));
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/components/constant/routes.dart';
+import 'package:movie_app/view/screen/auth/signup_screen.dart';
+import 'package:movie_app/view/screen/home_screen.dart';
 import '../../../../components/components.dart';
 import '../../../../components/constant/imageassets.dart';
 import '../../../cubit/login_cubit/login_cubit.dart';
@@ -143,23 +144,14 @@ class LoginScreen extends StatelessWidget {
       if (state is LoginSuccessState) {
         showToast(text: "Login Successfully", color: Colors.green);
 
-        Navigator.pushReplacementNamed(
-          context,
-          AppRoutes.homePage,
-        );
+        navigateToReplacement(context, HomeScreen());
       }
       if (state is LoginGoToSignUpState) {
-        Navigator.pushReplacementNamed(
-          context,
-          AppRoutes.signupPage,
-        );
+        navigateToReplacement(context, const SignUpScreen());
       }
       if (state is LoginWithGoogleState) {
         showToast(text: "Login Successfully", color: Colors.green);
-        Navigator.pushReplacementNamed(
-          context,
-          AppRoutes.homePage,
-        );
+        navigateToReplacement(context, HomeScreen());
       }
     });
   }

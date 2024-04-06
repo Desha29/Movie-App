@@ -1,11 +1,9 @@
-import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:movie_app/view/screen/auth/login_screen.dart';
-import 'package:movie_app/view/screen/spalsh_screen.dart';
+import 'package:movie_app/view/screen/splash_screen.dart';
 
 Widget start() {
   if (FirebaseAuth.instance.currentUser != null) {
@@ -15,8 +13,18 @@ Widget start() {
   }
 }
 
-void navigateTo(context, String route, {List<Object>? arguments}) =>
-    Navigator.pushNamed(context, route, arguments: arguments);
+void navigateTo(context, Widget) => Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Widget,
+      ),
+    );
+void navigateToReplacement(context, Widget) => Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Widget,
+      ),
+    );
 void showToast({
   required String text,
   required Color color,
@@ -84,11 +92,11 @@ class GradientColor extends StatelessWidget {
             0.7,
             0.9
           ], colors: [
-            Color(0xff1c1c1c).withOpacity(0.01),
-            Color(0xff1c1c1c).withOpacity(0.3),
-            Color(0xff1c1c1c).withOpacity(0.6),
-            Color(0xff1c1c1c).withOpacity(0.9),
-            Color(0xff1c1c1c)
+            const Color(0xff1c1c1c).withOpacity(0.01),
+            const Color(0xff1c1c1c).withOpacity(0.3),
+            const Color(0xff1c1c1c).withOpacity(0.6),
+            const Color(0xff1c1c1c).withOpacity(0.9),
+            const Color(0xff1c1c1c)
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         ),
       ),

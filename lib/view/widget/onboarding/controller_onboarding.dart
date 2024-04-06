@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../components/constant/routes.dart';
+import 'package:movie_app/view/screen/auth/login_screen.dart';
+import '../../../components/components.dart';
 import '../../../cubit/onboarding_cubit/onboarding_cubit.dart';
 import '../../../cubit/onboarding_cubit/onboarding_states.dart';
 import '../../../data/static/static.dart';
@@ -33,8 +34,7 @@ class ControllerOnBoarding extends StatelessWidget {
       },
       listener: (context, state) {
         if (state is OnBoardingEnding) {
-          Navigator.pushNamedAndRemoveUntil(
-              context, AppRoutes.loginPage, (route) => true);
+          navigateToReplacement(context, const LoginScreen());
         }
       },
     );

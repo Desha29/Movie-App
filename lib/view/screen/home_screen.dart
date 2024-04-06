@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/components/components.dart';
 import 'package:movie_app/cubit/movies_cubit/movie_cubit.dart';
-
-import '../../components/constant/routes.dart';
+import 'package:movie_app/view/screen/search_screen.dart';
 import '../widget/home/drawer_column.dart';
 import '../widget/home/home_body.dart';
 
@@ -28,7 +27,7 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(width: 10),
                 InkWell(
                     onTap: () {
-                      navigateTo(context, AppRoutes.searchPage);
+                      navigateTo(context, const SearchPage());
                     },
                     child: const Icon(
                       Icons.search,
@@ -41,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                       Icons.notifications_none_rounded,
                     )),
               ]),
-          body: HomeBody()),
+          body: const HomeBody()),
     );
   }
 }

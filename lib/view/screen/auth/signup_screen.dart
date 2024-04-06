@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/view/screen/auth/login_screen.dart';
 import '../../../../components/components.dart';
-import '../../../../components/constant/routes.dart';
 import '../../../cubit/signup_cubit/signup_cubit.dart';
 import '../../../cubit/signup_cubit/signup_states.dart';
 import '../../../../components/constant/imageassets.dart';
@@ -10,6 +10,7 @@ import '../../widget/auth/customtextbody.dart';
 import '../../widget/auth/customtextfieldform.dart';
 import '../../widget/auth/customtextsign.dart';
 import '../../widget/auth/customtitle.dart';
+import '../home_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -119,15 +120,9 @@ class SignUpScreen extends StatelessWidget {
       listener: (context, state) {
         if (state is SignUpSuccessState) {
           showToast(text: "Sign Up Successfully", color: Colors.green);
-          Navigator.pushReplacementNamed(
-            context,
-            AppRoutes.homePage,
-          );
+          navigateToReplacement(context, HomeScreen());
         } else if (state is SignUpGoToLogin) {
-          Navigator.pushReplacementNamed(
-            context,
-            AppRoutes.loginPage,
-          );
+          navigateToReplacement(context, const LoginScreen());
         }
       },
     );
