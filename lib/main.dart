@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/cubit/app/app_cubit.dart';
 import 'package:movie_app/cubit/movies_cubit/search_cubit/search_cubit.dart';
 import 'components/constant/bloc_observer.dart';
 import 'components/components.dart';
@@ -44,7 +43,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => AppCubit()),
           BlocProvider(create: (context) => LoginCubit()),
           BlocProvider(create: (context) => SignUpCubit()),
           BlocProvider(create: (context) => OnBoardingCubit()),

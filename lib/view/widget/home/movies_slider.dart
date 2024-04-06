@@ -23,7 +23,7 @@ class MovieSlider extends StatelessWidget {
               options: CarouselOptions(
                   viewportFraction: 1,
                   autoPlayCurve: Curves.ease,
-                  autoPlay: true,
+                  autoPlay: false,
                   autoPlayAnimationDuration: const Duration(seconds: 2),
                   enlargeCenterPage: true,
                   pageSnapping: false),
