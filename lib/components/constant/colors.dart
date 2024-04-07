@@ -8,7 +8,8 @@ class ColorPalette {
   static const Color primary3 = Color(0xff5D5f64);
 
   static const Color darkPrimary = Color(0xffE21221);
-  static const Color darkBackground = Color.fromRGBO(14,16,29,50);
+  static const Color darkPrimary1 = Color(0xff2a2a2a);
+  static const Color darkBackground = Color.fromRGBO(14, 16, 29, 50);
   static const Color darkForeground = Color(0xff202228);
   static const Color darkSecondary = Color(0xff281920);
 

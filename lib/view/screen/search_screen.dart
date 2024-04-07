@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:movie_app/cubit/movies_cubit/search_cubit/search_cubit.dart';
 import 'package:movie_app/cubit/movies_cubit/search_cubit/search_states.dart';
 import 'package:movie_app/view/screen/movie/movie_details_screen.dart';

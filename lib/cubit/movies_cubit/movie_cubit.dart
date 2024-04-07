@@ -1,5 +1,7 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../model/movies_model.dart';
 import '../../data/api/get_movies.dart';
@@ -15,6 +17,7 @@ class MovieCubit extends Cubit<MovieState> {
   static List<Movies> popularMovies = [];
   static List<Movies> trendingMovies = [];
   static List<Movies> result = [];
+
   getMovies() async {
     emit(MovieLoadingState());
 
