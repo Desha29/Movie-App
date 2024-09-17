@@ -29,11 +29,11 @@ class CastCubit extends Cubit<CastState> {
     DioHelper.id = id.toString();
     print(".........................");
     CastCubit.id = id;
-    List castlist = await DioHelper().getCasts();
-    casts = Casts.convertToCasts(castlist);
+    List castList = await DioHelper().getCasts();
+    casts = Casts.convertToCasts(castList);
   }
 
-  void ClearCast() {
+  void clearCast() {
     casts.clear();
     emit(CastInitial());
   }

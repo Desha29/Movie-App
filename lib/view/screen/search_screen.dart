@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/components/constant/colors.dart';
 import 'package:movie_app/cubit/movies_cubit/search_cubit/search_cubit.dart';
 import 'package:movie_app/cubit/movies_cubit/search_cubit/search_states.dart';
 import 'package:movie_app/view/screen/movie/movie_details_screen.dart';
 import '../../components/components.dart';
 import '../../components/constant/api_constants.dart';
-import '../../components/constant/imageassets.dart';
-import '../../components/exception_widget.dart';
+import '../../components/constant/images_assets.dart';
 
-class SearchPage extends StatelessWidget {
-  const SearchPage({super.key});
+class SearchScreen extends StatelessWidget {
+  const SearchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,10 @@ class SearchPage extends StatelessWidget {
                 controller: searchController,
                 decoration: InputDecoration(
                   labelText: "Search",
-                  prefixIcon: const Icon(Icons.search),
+                  prefixIcon: const Icon(
+                    Icons.search,
+                    color: ColorPalette.darkPrimary,
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),

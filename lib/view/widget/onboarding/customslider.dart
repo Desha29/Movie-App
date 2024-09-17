@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/components/constant/colors.dart';
 import '../../../components/components.dart';
 import '../../../cubit/onboarding_cubit/onboarding_cubit.dart';
 import '../../../data/static/static.dart';
@@ -6,7 +7,7 @@ import '../../../model/onboardingmodel.dart';
 import '../../screen/auth/login_screen.dart';
 
 class CustomSliderOnBoarding extends StatelessWidget {
-  const CustomSliderOnBoarding({
+   const CustomSliderOnBoarding({
     super.key,
     required this.height,
     required this.width,
@@ -14,6 +15,7 @@ class CustomSliderOnBoarding extends StatelessWidget {
 
   final double height;
   final double width;
+  //int index=0;
 
   Widget build(BuildContext context) {
     OnBoardingCubit cubit = OnBoardingCubit.get(context);
@@ -22,6 +24,7 @@ class CustomSliderOnBoarding extends StatelessWidget {
         controller: cubit.pageController,
         onPageChanged: (value) {
           cubit.onPageChanged(value);
+          // index=value;
         },
         itemCount: onBoardingList.length,
         itemBuilder: (context, i) => Stack(
@@ -47,12 +50,12 @@ class CustomSliderOnBoarding extends StatelessWidget {
                               Expanded(
                                 child: Padding(
                                   padding: EdgeInsets.only(left: width / 3),
-                                  child: const Text(
+                                  child: Text(
                                     OnBoardingModel.logo,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 28,
-                                        color: Colors.white),
+                                        color:i==1? Colors.white: ColorPalette.darkPrimary ),
                                   ),
                                 ),
                               ),

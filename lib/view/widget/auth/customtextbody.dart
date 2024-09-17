@@ -23,7 +23,7 @@ class CustomTextBodyAuth extends StatelessWidget {
         Text(
           textbody,
           textAlign: TextAlign.center,
-          style: const TextStyle(color: Colors.white70, fontSize: 15),
+          style:  TextStyle(color:Theme.of(context).textTheme.bodyMedium!.color, fontSize: 15),
         ),
       ]),
     );

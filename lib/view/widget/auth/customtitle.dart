@@ -33,8 +33,8 @@ class CustomTitleAuth extends StatelessWidget {
               text: TextSpan(children: [
             TextSpan(
               text: text,
-              style: const TextStyle(
-                  color: Colors.white,
+              style: TextStyle(
+                  color: Theme.of(context).textTheme.displayLarge!.color,
                   fontSize: 40,
                   fontWeight: FontWeight.bold),
             ),
@@ -47,7 +47,7 @@ class CustomTitleAuth extends StatelessWidget {
             )
           ])),
         ),
-        GradientColor(top: 120, height: 200, bottom: -10)
+        const GradientColor(top: 100, height: 100, bottom: -40)
       ],
     );
   }

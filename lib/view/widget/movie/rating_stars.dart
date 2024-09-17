@@ -18,7 +18,7 @@ class RatingStars extends StatelessWidget {
         direction: Axis.horizontal,
         allowHalfRating: true,
         ignoreGestures: true,
-        itemSize: 16,
+        itemSize: 20,
         unratedColor: const Color.fromARGB(255, 53, 53, 53),
         itemBuilder: (context, _) =>
             const Icon(Icons.star, color: Colors.amber),

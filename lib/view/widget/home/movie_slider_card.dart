@@ -1,16 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/view/screen/movie/movie_play_screen.dart';
-import 'package:movie_app/view/widget/home/custom_button.dart';
+import 'package:movie_app/components/constant/colors.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../components/components.dart';
 import '../../../components/constant/api_constants.dart';
-import '../../../components/constant/imageassets.dart';
+import '../../../components/constant/images_assets.dart';
 import '../../../model/movies_model.dart';
 import '../movie/rating_stars.dart';
 
-class MovieRoundImage extends StatelessWidget {
-  const MovieRoundImage({
+class MovieSliderCard extends StatelessWidget {
+  const MovieSliderCard({
     super.key,
     required this.movieItem,
   });
@@ -21,7 +20,7 @@ class MovieRoundImage extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: 600,
+          height: 700,
           width: 800,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
@@ -43,37 +42,22 @@ class MovieRoundImage extends StatelessWidget {
             ),
           ),
         ),
-        const GradientColor(height: 200, top: 0, bottom: -30),
+        const GradientColor(height: 200, top: 0, bottom: -90),
         Positioned(
-          bottom: 30,
-          right: 30,
-          child: InkWell(
-            onTap: () {
-              navigateTo(
-                context,
-                MoviePlayScreen(movieItem: movieItem),
-              );
-            },
-            child: const CustomIconButton(
-              icon: Icons.play_circle_rounded,
-              border: false,
-              text: 'Play',
-            ),
-          ),
-        ),
-        Positioned(
-          bottom: 45,
+          bottom: 50,
           left: 20,
           child: Text(
             movieItem.title,
+            maxLines: 1,
+            softWrap: true,
             style: const TextStyle(
-              color: Color.fromARGB(141, 255, 255, 255),
-              fontSize: 20,
+              color: Colors.white,
+              fontSize: 24,
             ),
           ),
         ),
         Positioned(
-          bottom: 25,
+          bottom: 15,
           left: 20,
           child: SingleChildScrollView(
             child: Row(
@@ -81,12 +65,12 @@ class MovieRoundImage extends StatelessWidget {
                 Text(
                   movieItem.voteAverage.roundToDouble().toString(),
                   style: const TextStyle(
-                      color: Color.fromARGB(255, 90, 95, 151),
-                      fontSize: 15,
+                      color: ColorPalette.darkPrimary,
+                      fontSize: 18,
                       fontWeight: FontWeight.w800),
                 ),
                 const SizedBox(
-                  width: 5,
+                  width: 8,
                 ),
                 RatingStars(
                     MovieStars: movieItem.voteAverage / 2.roundToDouble()),

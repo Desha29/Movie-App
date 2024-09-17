@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/model/movies_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import '../../../components/constant/dark_theme.dart';
-import '../../../components/exception_widget.dart';
-import '../../../components/loading_widget.dart';
+
+import '../../../components/components.dart';
+import '../../../components/constant/colors.dart';
 import '../../../cubit/movies_cubit/video_cubit/video_cubit.dart';
 import '../../widget/home/movie_row.dart';
 import '../../widget/movie/movie_information_row.dart';
+import '../../widget/movie/rating_stars.dart';
 import '../../widget/movie/subText.dart';
 import '../home_screen.dart';
 
@@ -22,20 +23,11 @@ class MoviePlayScreen extends StatelessWidget {
       create: (context) => VideoCubit()..getVideos(id: movieItem.id),
       child: Scaffold(
         appBar: AppBar(
-            iconTheme: const IconThemeData(
-              size: 30,
-              color: Colors.white,
-            ),
-            actions: [
-              InkWell(
-                  onTap: () {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
-                  },
-                  child: const Icon(
-                    Icons.home_filled,
-                  )),
-            ]),
+          iconTheme: const IconThemeData(
+            size: 30,
+            color: Colors.white,
+          ),
+        ),
         body: BlocConsumer<VideoCubit, VideoState>(
           listener: (context, state) {},
           builder: (context, state) {
@@ -63,30 +55,66 @@ class MoviePlayScreen extends StatelessWidget {
                   progressIndicatorColor: Colors.amber,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      MovieInformationRow(
-                          language: movieItem.language.toUpperCase().toString(),
-                          year: movieItem.releaseDate.toString(),
-                          rating: movieItem.voteCount.toString()),
-                      Text("Storyline:", style: darkTheme.textTheme.labelLarge),
-                      ExpandableText(text: movieItem.overview),
-                      ConditionalBuilderRec(
-                        condition: VideoCubit.recommendingMovies.isNotEmpty,
-                        builder: (context) {
-                          return MovieRow(
-                              title: " Recommended",
-                              movies: VideoCubit.recommendingMovies);
-                        },
-                      ),
-                      MovieRow(
-                          title: " Similar",
-                          movies: VideoCubit.similarlyMovies),
-                    ],
-                  ),
-                )
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 20),
+                          Center(
+                            child: Column(
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      movieItem.title,
+                                      maxLines: 2,
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          '${movieItem.voteAverage.roundToDouble()}',
+                                          style: const TextStyle(
+                                              color: ColorPalette.darkPrimary,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w800),
+                                        ),
+                                        const SizedBox(width: 15),
+                                        RatingStars(
+                                            MovieStars: movieItem.voteAverage /
+                                                2.roundToDouble()),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 5),
+                                MovieInformationRow(
+                                    language: movieItem.language
+                                        .toUpperCase()
+                                        .toString(),
+                                    year: movieItem.releaseDate.toString(),
+                                    rating: movieItem.voteCount.toString()),
+                                const SizedBox(height: 20),
+                                ConditionalBuilderRec(
+                                  condition:
+                                      VideoCubit.recommendingMovies.isNotEmpty,
+                                  builder: (context) {
+                                    return MovieRow(
+                                        title: " Recommended",
+                                        movies: VideoCubit.recommendingMovies);
+                                  },
+                                ),
+                                MovieRow(
+                                    title: " Similar",
+                                    movies: VideoCubit.similarlyMovies),
+                              ],
+                            ),
+                          )
+                        ]))
               ]);
             } else if (state is VideoLoadingState) {
               return const LoadingWidget();

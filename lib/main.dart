@@ -10,6 +10,7 @@ import 'cubit/onboarding_cubit/onboarding_cubit.dart';
 import 'cubit/signup_cubit/signup_cubit.dart';
 import 'data/firebase/firebase_options.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -50,6 +51,7 @@ class _MyAppState extends State<MyApp> {
         ],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
+          
             theme: ThemeData.dark(
               useMaterial3: true,
             ),

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/view/screen/auth/signup_screen.dart';
 import 'package:movie_app/view/screen/home_screen.dart';
+import 'package:movie_app/view/screen/main_wrap.dart';
 import '../../../../components/components.dart';
-import '../../../../components/constant/imageassets.dart';
+import '../../../components/constant/images_assets.dart';
 import '../../../cubit/login_cubit/login_cubit.dart';
 import '../../../cubit/login_cubit/login_states.dart';
 import '../../widget/auth/custombuttonauth.dart';
@@ -22,7 +23,7 @@ class LoginScreen extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginStates>(builder: (context, state) {
       LoginCubit cubit = LoginCubit.get(context);
       return Scaffold(
-        backgroundColor: const Color(0xff1f1f1f),
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -35,7 +36,7 @@ class LoginScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Form(
-                key: cubit.formstate,
+                key: cubit.formState,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -49,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                       validate: (val) {
                         return validInput(val!, 5, 50, "email");
                       },
-                      labeltext: "Email",
+                      labelText: "Email",
                       hinttext: "Enter your Email",
                       mycontroller: cubit.email,
                       suffix: IconButton(
@@ -64,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                       validate: (val) {
                         return validInput(val!, 5, 30, "password");
                       },
-                      labeltext: "Password",
+                      labelText: "Password",
                       hinttext: "Enter your password",
                       mycontroller: cubit.password,
                       isPassword: cubit.isPassword,
@@ -144,14 +145,14 @@ class LoginScreen extends StatelessWidget {
       if (state is LoginSuccessState) {
         showToast(text: "Login Successfully", color: Colors.green);
 
-        navigateToReplacement(context, HomeScreen());
+        navigateToReplacement(context, const MainWrap());
       }
       if (state is LoginGoToSignUpState) {
         navigateToReplacement(context, const SignUpScreen());
       }
       if (state is LoginWithGoogleState) {
         showToast(text: "Login Successfully", color: Colors.green);
-        navigateToReplacement(context, HomeScreen());
+        navigateToReplacement(context, const MainWrap());
       }
     });
   }

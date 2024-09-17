@@ -2,11 +2,18 @@
     "cSpell.words": [
         "Alives",
         "Gnav",
+        "LTRB",
+        "mooviz",
         "movietype",
         "MPLAY",
+        "nunito",
+        "pngs",
+        "svgs",
         "textbody",
         "textitle",
         "texttile",
         "videokey"
-    ]
+    ],
+    "pieces.cloudCapabilities": "Blended",
+    "pieces.telemetry": true
 }

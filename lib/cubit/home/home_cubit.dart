@@ -14,7 +14,7 @@ class NavBarCubit extends Cubit<NavbarState> {
   final List<Widget> pages = [
     HomeScreen(),
     const FavoritePage(),
-    const SearchPage(),
+    const SearchScreen(),
     ProfileScreen(),
   ];
 

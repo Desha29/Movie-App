@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/view/screen/movie/movie_categories_screen.dart';
-import 'package:movie_app/view/widget/home/image_container.dart';
 import '../../../components/components.dart';
 import '../../../components/constant/api_constants.dart';
 import '../../../components/constant/colors.dart';
-import '../../../components/loading_widget.dart';
 import '../../screen/movie/movie_details_screen.dart';
+import 'movie_card.dart';
 
 class MovieRow extends StatelessWidget {
   MovieRow({super.key, required this.title, required this.movies});
@@ -26,7 +25,7 @@ class MovieRow extends StatelessWidget {
                   title,
                   style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 22,
                       fontWeight: FontWeight.w600),
                 ),
                 TextButton(
@@ -37,12 +36,11 @@ class MovieRow extends StatelessWidget {
                     );
                   },
                   child: const Text(
-                    "See more",
+                    "See All",
                     style: TextStyle(
                       color: ColorPalette.darkPrimary,
-                      fontSize: 14,
+                      fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      decoration: TextDecoration.underline,
                       decorationColor: Color.fromARGB(255, 237, 55, 55),
                     ),
                   ),
@@ -51,8 +49,9 @@ class MovieRow extends StatelessWidget {
             ),
           ),
           SingleChildScrollView(
-            child: Container(
-              height: 280,
+            child: SizedBox(
+              height: 300,
+              width: double.infinity,
               child: movies.isEmpty
                   ? const LoadingWidget()
                   : ListView.builder(
@@ -67,29 +66,31 @@ class MovieRow extends StatelessWidget {
                             navigateTo(context,
                                 MovieDetails(movieItem: movies[index]));
                           },
-                          child: Column(
-                            children: [
-                              Container(
-                                width: 160,
-                                margin: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 10),
-                                child: Image_Container(
-                                    imageUrl: ApiConstants.imageUrl +
-                                        movies[index].posterPath,
-                                    rate: movies[index]
-                                        .voteAverage
-                                        .roundToDouble()),
-                              ),
-                              Text(
-                                movies[index].title,
-                                maxLines: 2,
-                                softWrap: true,
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 8,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                            ],
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 170,
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  child: MovieCard(
+                                      imageUrl: ApiConstants.imageUrl +
+                                          movies[index].posterPath,
+                                      rate: movies[index]
+                                          .voteAverage
+                                          .roundToDouble()),
+                                ),
+                                Text(
+                                  movies[index].title,
+                                  maxLines: 3,
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       }),

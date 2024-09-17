@@ -1,4 +1,4 @@
-import '../../components/constant/imageassets.dart';
+import '../../components/constant/images_assets.dart';
 import '../../model/onboardingmodel.dart';
 
 List<OnBoardingModel> onBoardingList = [

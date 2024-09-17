@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../../../components/constant/dark_theme.dart';
+import '../../../components/constant/colors.dart';
 
 class ExpandableText extends StatefulWidget {
   final String text;
@@ -33,40 +33,40 @@ class _ExpandableTextState extends State<ExpandableText> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text.rich(
-        TextSpan(
-          style: darkTheme.textTheme.bodyMedium,
-          children: [
-            TextSpan(text: isExpanded ? widget.text : firstHalf),
-            if (!isExpanded) ...[
-              TextSpan(text: '...'),
-              TextSpan(
-                text: 'show more',
-                style: darkTheme.textTheme.bodyLarge,
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () {
-                    setState(() {
-                      isExpanded = true;
-                    });
-                  },
-              ),
-            ],
-            if (isExpanded && secondHalf.isNotEmpty) ...[
-              TextSpan(text: secondHalf),
-              TextSpan(
-                text: 'show less',
-                style: darkTheme.textTheme.bodyLarge,
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () {
-                    setState(() {
-                      isExpanded = false;
-                    });
-                  },
-              ),
-            ],
+    return Text.rich(
+      TextSpan(
+        style: const TextStyle(color: Colors.white),
+        children: [
+          TextSpan(text: isExpanded ? widget.text : firstHalf),
+          if (!isExpanded) ...[
+            const TextSpan(text: '...'),
+            TextSpan(
+              text: 'show more',
+              style: const TextStyle(
+                  color: ColorPalette.darkPrimary, fontWeight: FontWeight.bold),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  setState(() {
+                    isExpanded = true;
+                  });
+                },
+            ),
           ],
-        ),
+          if (isExpanded && secondHalf.isNotEmpty) ...[
+            TextSpan(text: secondHalf),
+            TextSpan(
+              text: 'show less',
+              style: const TextStyle(
+                  color: ColorPalette.darkPrimary, fontWeight: FontWeight.bold),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  setState(() {
+                    isExpanded = false;
+                  });
+                },
+            ),
+          ],
+        ],
       ),
     );
   }

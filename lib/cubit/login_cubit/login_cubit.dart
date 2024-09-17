@@ -8,7 +8,7 @@ import 'package:movie_app/data/firebase/firebase_auth_helper.dart';
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(LoginInitialState());
   static LoginCubit get(context) => BlocProvider.of(context);
-  GlobalKey<FormState> formstate = GlobalKey<FormState>();
+  GlobalKey<FormState> formState = GlobalKey<FormState>();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   static String userName = "";
@@ -17,7 +17,7 @@ class LoginCubit extends Cubit<LoginStates> {
   bool isPassword = true;
 
   void login() async {
-    var formdata = formstate.currentState;
+    var formdata = formState.currentState;
 
     if (formdata!.validate()) {
       print("Valid");

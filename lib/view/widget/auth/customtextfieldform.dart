@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomTextFormAuth extends StatelessWidget {
   final String hinttext;
-  final String labeltext;
+  final String labelText;
   final TextEditingController? mycontroller;
   final String? Function(String?)? validate;
   final TextInputType? keyboardType;
@@ -11,7 +11,7 @@ class CustomTextFormAuth extends StatelessWidget {
   CustomTextFormAuth(
       {super.key,
       required this.hinttext,
-      required this.labeltext,
+      required this.labelText,
       this.mycontroller,
       this.validate,
       this.keyboardType,
@@ -26,16 +26,16 @@ class CustomTextFormAuth extends StatelessWidget {
         obscureText: isPassword,
         keyboardType: keyboardType,
         validator: validate,
-        cursorColor: Colors.white,
-        style: TextStyle(fontSize: 18, color: Colors.white),
+        cursorColor: Theme.of(context).textTheme.bodySmall!.color,
+        style: TextStyle(fontSize: 18, color:Theme.of(context).textTheme.bodySmall!.color),
         controller: mycontroller,
         decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(color: Colors.white)),
+                borderSide: const BorderSide(color: Colors.white)),
             floatingLabelBehavior: FloatingLabelBehavior.always,
-            floatingLabelStyle: const TextStyle(
-              color: Colors.white,
+            floatingLabelStyle:  TextStyle(
+              color: Theme.of(context).textTheme.bodySmall!.color,
               fontSize: 25,
             ),
             contentPadding:
@@ -45,10 +45,10 @@ class CustomTextFormAuth extends StatelessWidget {
             ),
             label: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text(labeltext)),
+                child: Text(labelText)),
             hintText: hinttext,
             suffixIcon: suffix,
-            labelStyle: const TextStyle(fontSize: 22, color: Colors.white),
+            labelStyle:  TextStyle(fontSize: 22, color: Theme.of(context).textTheme.labelLarge!.color),
             hintStyle: const TextStyle(fontSize: 14)),
       ),
     );

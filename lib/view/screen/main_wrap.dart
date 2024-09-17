@@ -19,12 +19,13 @@ class MainWrap extends StatelessWidget {
           builder: (context, state) {
             NavBarCubit cubit = NavBarCubit.get(context);
             return Scaffold(
+                backgroundColor: Theme.of(context).colorScheme.surface,
                 body: cubit.pages
                     .elementAt(NavBarCubit.get(context).currentIndex),
                 bottomNavigationBar: BottomNavigationBar(
                   type: BottomNavigationBarType.fixed,
                   selectedItemColor: ColorPalette.darkPrimary,
-                  backgroundColor: ColorPalette.darkPrimary1,
+                  backgroundColor: Theme.of(context).colorScheme.surface,
                   currentIndex: NavBarCubit.get(context).currentIndex,
                   items: [
                     BottomNavigationBarItem(
@@ -37,7 +38,7 @@ class MainWrap extends StatelessWidget {
                         icon: Icon(Icons.person), label: 'Profile'),
                   ],
                   unselectedItemColor: Colors.white,
-                  iconSize: 26,
+                  iconSize: 28,
                   onTap: (value) {
                     NavBarCubit.get(context).changeSelectedIndex(value);
                   },

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/components/loading_widget.dart';
+import '../../../components/components.dart';
 import '../../../cubit/movies_cubit/movie_cubit.dart';
-import '../../../components/exception_widget.dart';
-import 'category_row.dart';
 import 'movie_row.dart';
 import 'movies_slider.dart';
 
@@ -46,14 +44,10 @@ class HomeBody extends StatelessWidget {
           const Text(
             "Trending Movies" "🔥",
             style: TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
+                color: Colors.white, fontSize: 22, fontWeight: FontWeight.w600),
           ),
           MovieSlider(
             trendingMovies: trendingMovies,
-          ),
-          SizedBox(
-            height: 60,
-            child: CategoryRow(),
           ),
           MovieRow(title: "Upcoming", movies: upComingMovies),
           MovieRow(title: "Now Playing", movies: nowPlayingMovies),

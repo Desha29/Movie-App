@@ -4,13 +4,14 @@ import 'package:movie_app/view/screen/auth/login_screen.dart';
 import '../../../../components/components.dart';
 import '../../../cubit/signup_cubit/signup_cubit.dart';
 import '../../../cubit/signup_cubit/signup_states.dart';
-import '../../../../components/constant/imageassets.dart';
+import '../../../components/constant/images_assets.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextbody.dart';
 import '../../widget/auth/customtextfieldform.dart';
 import '../../widget/auth/customtextsign.dart';
 import '../../widget/auth/customtitle.dart';
 import '../home_screen.dart';
+import '../main_wrap.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -50,7 +51,7 @@ class SignUpScreen extends StatelessWidget {
                         validate: (val) {
                           return validInput(val!, 5, 15, "username");
                         },
-                        labeltext: "Username",
+                        labelText: "Username",
                         hinttext: "Enter username",
                         mycontroller: cubit.username,
                         suffix: IconButton(
@@ -65,7 +66,7 @@ class SignUpScreen extends StatelessWidget {
                         validate: (val) {
                           return validInput(val!, 5, 50, "email");
                         },
-                        labeltext: "Email",
+                        labelText: "Email",
                         hinttext: "Enter your Email",
                         mycontroller: cubit.email,
                         suffix: IconButton(
@@ -80,7 +81,7 @@ class SignUpScreen extends StatelessWidget {
                         validate: (val) {
                           return validInput(val!, 5, 30, "password");
                         },
-                        labeltext: "Password",
+                        labelText: "Password",
                         hinttext: "Enter your password",
                         isPassword: cubit.isPassword,
                         mycontroller: cubit.password,
@@ -120,7 +121,7 @@ class SignUpScreen extends StatelessWidget {
       listener: (context, state) {
         if (state is SignUpSuccessState) {
           showToast(text: "Sign Up Successfully", color: Colors.green);
-          navigateToReplacement(context, HomeScreen());
+          navigateToReplacement(context, const MainWrap());
         } else if (state is SignUpGoToLogin) {
           navigateToReplacement(context, const LoginScreen());
         }

@@ -17,15 +17,18 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Timer(const Duration(seconds: 3), () {
-      navigateToReplacement(context, MainWrap());
+      navigateToReplacement(context, const MainWrap());
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Lottie.asset(
-        "assets/images/mplay.json",
+    return Scaffold(
+      backgroundColor: const Color(0xff141414),
+      body: Center(
+        child: Lottie.asset(
+          "assets/images/mooviz.json",
+        ),
       ),
     );
   }

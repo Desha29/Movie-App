@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/components/constant/dark_theme.dart';
+
 import 'package:movie_app/view/widget/home/profile_list_item.dart';
 
 import '../../components/components.dart';

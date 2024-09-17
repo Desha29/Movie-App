@@ -50,26 +50,31 @@ class Movies {
 
 class Casts {
   final String profilePath;
+  final String originalName;
 
-  Casts({required this.profilePath});
+  Casts({required this.originalName, required this.profilePath});
   static List<Casts> convertToCasts(List casts) {
     List<Casts> castList = [];
     for (var cast in casts) {
-      if (cast["profile_path"] == null) {
+      if (cast["profile_path"] == null || cast["original_name"] == null) {
         continue;
       }
-      castList.add(Casts(profilePath: cast["profile_path"]));
+      castList.add(Casts(
+        originalName: cast["original_name"],
+        profilePath: cast["profile_path"],
+      ));
     }
     return castList;
   }
 }
+
 class Videos {
   final String videokey;
 
-  Videos({required this.videokey} );
+  Videos({required this.videokey});
 
   static List<Videos> convertToVideos(List videos) {
-    List<Videos>  videoList = [];
+    List<Videos> videoList = [];
     for (var video in videos) {
       if (video["key"] == null) {
         continue;

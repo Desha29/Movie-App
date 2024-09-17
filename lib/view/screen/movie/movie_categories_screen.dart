@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/components/components.dart';
+import 'package:movie_app/components/constant/colors.dart';
 import '../../widget/movie/movie_container.dart';
 import '../search_screen.dart';
+import 'movie_details_screen.dart';
 
 // ignore: must_be_immutable
 class MovieTypePage extends StatelessWidget {
@@ -12,17 +14,18 @@ class MovieTypePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          centerTitle: true,
           iconTheme: const IconThemeData(size: 30, color: Colors.white),
           backgroundColor: Colors.transparent,
           title: Text(
             title,
             style: const TextStyle(
-                color: Colors.white, fontWeight: FontWeight.w600),
+                color: ColorPalette.darkPrimary, fontWeight: FontWeight.w600),
           ),
           actions: [
             InkWell(
                 onTap: () {
-                  navigateTo(context, const SearchPage());
+                  navigateTo(context, const SearchScreen());
                 },
                 child: const Icon(Icons.search, size: 30)),
           ]),
@@ -31,8 +34,14 @@ class MovieTypePage extends StatelessWidget {
         child: ListView.builder(
             itemCount: movies.length,
             itemBuilder: (context, index) {
-              return MovieContainer(
-                movieItem: movies[index],
+              return InkWell(
+                onTap: () {
+                          navigateTo(context,
+                                MovieDetails(movieItem: movies[index]));
+                },
+                child: MovieContainer(
+                  movieItem: movies[index],
+                ),
               );
             }),
       ),
